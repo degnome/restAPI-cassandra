@@ -4,11 +4,11 @@
 
 const should = require('chai').should();
 const models = require('express-cassandra');
-var DbClient = require('../lib/db');
+var Client = require('../lib/db');
 var config = require('./config');
 
 describe('Database Connection', function() {
-  var db = new DbClient();
+  var db = new Client();
   it('should connect and sync with db without errors', function (done) {
     this.timeout(5000);
     this.slow(1000);
