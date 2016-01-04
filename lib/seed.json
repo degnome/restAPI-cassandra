@@ -1,0 +1,8 @@
+[
+  {
+    "uniqueProperty": "aUniqueString",
+    "property1": "anystring",
+    "property2": "anotherstring",
+    "property3": 12345
+  }
+]

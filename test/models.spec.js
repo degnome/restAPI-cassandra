@@ -3,58 +3,31 @@
 'use strict';
 
 var should = require('chai').should();
-var DTO = require('../lib/models');
+var Model = require('../lib/models');
 
-describe('The user.model', function() {
-  var Model = DTO.User;
-
-  var args = {};
-  args.username = 'username';
-  args.email = 'email@mail.com';
-  args.firstname = 'firstname';
-  args.lastname = 'lastname';
-
-  describe('User Defaults', function() {
-    var model;
-
-    before(function() {
-      model = new Model();
-    });
-    it('should have an id', function() {
-      should.exist(model.id);
-      console.log(model);
-    });
-    it('should not have a username', function() {
-      should.not.exist(model.username);
-    });
-    it('should not have a email', function() {
-      should.not.exist(model.email);
-    });
-    it('should not have a firstname', function() {
-      should.not.exist(model.state);
-    });
-    it('should not have a lastname', function() {
-      should.not.exist(model.zip);
-    });
-
+describe('Model.item', () => {
+  describe('Defaults', () => {
+    var model = new Model.Item();
+    it('should have an id', () =>  should.exist(model.id) );
+    it('should not have a uniqueProperty', () => should.not.exist(model.uniqueProperty));
+    it('should not have a property1', () => should.not.exist(model.property1));
+    it('should have an empty property2', () => model.property2.should.be.empty);
+    it('should not have a property3', () => should.not.exist(model.property3));
+    it('should be valid', () => should.not.exist(model.isValid()));
   });
-  describe('User with Arguments', function() {
-    var model;
-
-    before(function() {
-      model = new Model(args);
-    });
-    it('has a username', function() {
-      model.username.should.equal(args.username);
-    });
-    it('has a email', function() {
-      model.email.should.equal(args.email);
-    });
-    it('has a firstname', function() {
-      model.firstname.should.equal(args.firstname);
-    });
-    it('has a lastname', function() {
-      model.lastname.should.equal(args.lastname);
-    });
+  describe('Arguments', () => {
+    var args = {
+      uniqueProperty: 'Unique',
+      property1: 'anystring',
+      property2: 'anotherstring',
+      property3: 123
+    };
+    var model = new Model.Item(args);
+    it('should have an id', () =>  should.exist(model.id) );
+    it('should have a uniqueProperty', () => model.uniqueProperty.should.equal(args.uniqueProperty));
+    it('should have a property1', () => model.property1.should.equal(args.property1));
+    it('should have a property2', () => model.property2.should.equal(args.property2));
+    it('should have a property3', () => model.property3.should.equal(args.property3));
+    it('should be valid', () => should.not.exist(model.isValid()));
   });
 });

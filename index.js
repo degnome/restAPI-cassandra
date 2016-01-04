@@ -21,9 +21,10 @@ server.connection({
 
 const swaggerOptions = {
   info: {
-    'title': 'User API Documentation',
+    'title': 'Sample Rest API with Cassandra DB',
     'version': Pack.version,
-  }
+  },
+  documentationPath: '/'
 };
 
 server.register([

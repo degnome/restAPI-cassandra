@@ -3,9 +3,14 @@ const Boom = require('Boom');
 module.exports.routes = [
     {
         method: 'GET',
-        path: '/status',
+        path: '/ping',
         handler: function(request,reply) {
-            reply('ok');
+            reply('pong');
+        },
+        config: {
+          description: 'Test API',
+          notes: 'Returns pong',
+          tags: ['api']
         }
     }, {
         method: 'GET',
